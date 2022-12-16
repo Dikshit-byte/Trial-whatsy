@@ -17,17 +17,13 @@ client.on('ready', () => {
     console.log('Client is ready!');
 });
 
-
-
-
-
-
 // open ai api
 
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+// console.log(process.env.OPENAI_API_KEYf)
 const openai = new OpenAIApi(configuration);
 
 
@@ -36,7 +32,7 @@ var response =  await openai.createCompletion({
   model: "text-davinci-002",
   prompt: topic,
   temperature: 0.3,
-  max_tokens: 150,
+  max_tokens: 1024,
   top_p: 1.0,
   frequency_penalty: 0.0,
   presence_penalty: 0.0,
@@ -45,17 +41,11 @@ return(response.data.choices[0].text);
 }
 
 
-
-
-
-
-
-
 async function chatWithAi(topic) {
     const chatResponse = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: topic,
-        max_tokens: 150,
+        max_tokens: 1024,
         top_p: 1,
         frequency_penalty: 0.0,
         presence_penalty: 0.6,
@@ -71,7 +61,7 @@ async function translateKar(text) {
         model: "text-davinci-003",
         prompt: text,
         temperature: 0.3,
-        max_tokens: 100,
+        max_tokens: 1024,
         top_p: 1.0,
         frequency_penalty: 0.0,
         presence_penalty: 0.0,
@@ -94,13 +84,6 @@ async function codex(text) {
     }
 
 
-
-
-
-
-
-
-
 // Set the menu options and corresponding responses
 // const menu = {
 //     "Search": "Type a keyword to search for. (e.g. Search: WhatsApp / search: WhatsApp)",
@@ -117,9 +100,6 @@ async function codex(text) {
 
 const searchEndpoint = "https://en.wikipedia.org/api/rest_v1/page/summary/";
 
-
-
-
 // Listen for incoming messages from users
 client.on('message', async msg => {
 
@@ -130,11 +110,7 @@ client.on('message', async msg => {
 		msg.reply("Warning! Don't Abuse\n Bot" );
 	}
 
-
-
     // await client.sendMessage(msg.from,);
-        
- 
 
     if (msg.body== 'menu' ||msg.body == 'Menu') {
     await client.sendMessage(msg.from, ` 
@@ -149,10 +125,7 @@ client.on('message', async msg => {
          `);
     }
     
-
         // Send the corresponding response for the selected option
-       
-    
     
      if (msg.body.startsWith("Search: ")||msg.body.startsWith("search: ")) {
         // Extract the keyword to search for from the message
@@ -174,20 +147,15 @@ client.on('message', async msg => {
          let result = await translateKar(text);
          
          client.sendMessage(msg.from, `Translation is:${result}`);
-
-
-  
-
-
     }
 
-    else if (msg.body.startsWith("notes: ")||msg.body.startsWith("Notes: ")) { 
+    else if (msg.body.startsWith("q: ")||msg.body.startsWith("Q: ")) { 
 
 
         const text = msg.body.split(", ")[0].split(": ")[1];
         console.log(text);
         let result = await searchNotes(text);
-        client.sendMessage(msg.from, `Notes are:${result}`);
+        client.sendMessage(msg.from, `Ans:${result}`);
 
         
     }
