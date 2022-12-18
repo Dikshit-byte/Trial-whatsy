@@ -1,3 +1,3 @@
 # Automation-IV-Whatsy
 
-In progress
+In progress but will soon be complete
