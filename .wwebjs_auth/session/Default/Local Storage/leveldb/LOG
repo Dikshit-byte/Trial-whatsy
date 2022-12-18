@@ -1,6 +1,0 @@
-2022/12/16-23:37:48.768 fc0 Reusing MANIFEST C:\projects\node\whatsy\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2022/12/16-23:37:48.768 fc0 Recovering log #3
-2022/12/16-23:37:48.769 fc0 Reusing old log C:\projects\node\whatsy\.wwebjs_auth\session\Default\Local Storage\leveldb/000003.log 
-2022/12/16-23:46:49.174 1e94 Level-0 table #5: started
-2022/12/16-23:46:49.188 1e94 Level-0 table #5: 23713 bytes OK
-2022/12/16-23:46:49.190 1e94 Delete type=0 #3

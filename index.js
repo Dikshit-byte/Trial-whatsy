@@ -110,7 +110,7 @@ client.on('message', async msg => {
 		msg.reply("Warning! Don't Abuse\n Bot" );
 	}
 
-    // await client.sendMessage(msg.from,);
+    await client.sendMessage(msg.from,);
 
     if (msg.body== 'menu' ||msg.body == 'Menu') {
     await client.sendMessage(msg.from, ` 
